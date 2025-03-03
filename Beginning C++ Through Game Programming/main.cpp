@@ -63,6 +63,13 @@ void task2()
 {
 	cout << "\nDifficulty Levels\n";
 
+	enum levels
+	{
+		Easy = 1,
+		Normal = 2,
+		Hard = 3
+	};
+
 	cout << "1 - Easy\n";
 	cout << "2 - Normal\n";
 	cout << "3 - Hard\n\n";
@@ -74,11 +81,11 @@ void task2()
 
 	switch (choise)
 	{
-	case 1: cout << "You picked Easy\n";
+	case Easy: cout << "You picked Easy\n";
 		break;
-	case 2: cout << "You picked Normal\n";
+	case Normal: cout << "You picked Normal\n";
 		break;
-	case 3: cout << "You picked Hard\n";
+	case Hard: cout << "You picked Hard\n";
 		break;
 
 	default:
