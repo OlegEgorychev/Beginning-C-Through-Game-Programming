@@ -59,6 +59,34 @@ void task1()
 	cout << "\nYou're win! It took you " << tryCounter << " tries.\n";
 }
 
+void task2()
+{
+	cout << "\nDifficulty Levels\n";
+
+	cout << "1 - Easy\n";
+	cout << "2 - Normal\n";
+	cout << "3 - Hard\n\n";
+
+	int choise;
+
+	cout << "Choise: ";
+	cin >> choise;
+
+	switch (choise)
+	{
+	case 1: cout << "You picked Easy\n";
+		break;
+	case 2: cout << "You picked Normal\n";
+		break;
+	case 3: cout << "You picked Hard\n";
+		break;
+
+	default:
+		cout << "You made illegal choise\n";
+		break;
+	}
+}
+
 int main()
 {
 
@@ -68,8 +96,9 @@ int main()
 	{
 		cout << "\tHello! This is program for practice while I reading the book <Beginning C++ Game Programming> ";
 		cout << "\nMenu: ";
-		cout << "\n1. Game: guess a number\n";
-		cout << "\nEnter number to chose game: ";
+		cout << "\n1. Game: guess a number";
+		cout << "\n2. Game: Menu Chooser";
+		cout << "\n\nEnter number to chose game: ";
 
 		cin >> choice;
 
@@ -77,8 +106,9 @@ int main()
 		{
 		case 1: task1();
 			break;
+		case 2: task2();
 
-		case 0: cout << "\nExit";
+		case 0: cout << "\nExit\n\n";
 			break;
 
 		default: cout << "\nUnfortunately it's not correct, please try again\n\n";
