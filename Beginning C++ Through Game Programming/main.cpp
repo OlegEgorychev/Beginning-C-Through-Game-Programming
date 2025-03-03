@@ -94,6 +94,41 @@ void task2()
 	}
 }
 
+void task3() 
+{
+	int myNumber;
+
+	enum answers
+	{
+		less = 1,
+		more = 2,
+		correct = 3
+	};
+
+	cout << "Please, think of a number from 0 to 10: ";
+	cin >> myNumber;
+
+	random_device rd;
+	uniform_int_distribution<int> dist(0, 10);
+
+	cout << "\nI think it's: " << dist(rd);
+
+	cout << "1 - My Number less\n";
+	cout << "2 - My Number more\n";
+	cout << "3 - Correct!\n";
+
+	int answer;
+	cout << "enter your answer: ";
+	cin >> answer;
+
+	switch (answer)
+	{
+	case less: cout << dist(rd);
+	default:
+		break;
+	}
+}
+
 int main()
 {
 
@@ -105,6 +140,7 @@ int main()
 		cout << "\nMenu: ";
 		cout << "\n1. Game: guess a number";
 		cout << "\n2. Game: Menu Chooser";
+		cout << "\n1. Game: guess MY number";
 		cout << "\n\nEnter number to chose game: ";
 
 		cin >> choice;
@@ -114,6 +150,9 @@ int main()
 		case 1: task1();
 			break;
 		case 2: task2();
+			break;
+		case 3: task2();
+			break;
 
 		case 0: cout << "\nExit\n\n";
 			break;
