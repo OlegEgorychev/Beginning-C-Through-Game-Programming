@@ -113,7 +113,7 @@ void task3()
 
 	cout << "\nI think it's: " << dist(rd);
 
-	cout << "1 - My Number less\n";
+	cout << "\n1 - My Number less\n";
 	cout << "2 - My Number more\n";
 	cout << "3 - Correct!\n";
 
@@ -140,7 +140,7 @@ int main()
 		cout << "\nMenu: ";
 		cout << "\n1. Game: guess a number";
 		cout << "\n2. Game: Menu Chooser";
-		cout << "\n1. Game: guess MY number";
+		cout << "\n3. Game: guess MY number";
 		cout << "\n\nEnter number to chose game: ";
 
 		cin >> choice;
@@ -151,7 +151,7 @@ int main()
 			break;
 		case 2: task2();
 			break;
-		case 3: task2();
+		case 3: task3();
 			break;
 
 		case 0: cout << "\nExit\n\n";
