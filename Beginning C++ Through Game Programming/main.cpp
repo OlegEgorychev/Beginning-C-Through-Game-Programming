@@ -97,7 +97,9 @@ void task2()
 void task3() 
 {
 	int myNumber;
+	int computerNumber;
 
+	//Player answers for computer
 	enum answers
 	{
 		less = 1,
@@ -105,28 +107,74 @@ void task3()
 		correct = 3
 	};
 
-	cout << "Please, think of a number from 0 to 10: ";
+	//range of guess number
+	int minValue = 0;
+	int maxValue = 10;
+
+	cout << "\nPlease, think of a number from 0 to 10 and I try to guess it: ";
 	cin >> myNumber;
 
-	random_device rd;
-	uniform_int_distribution<int> dist(0, 10);
-
-	cout << "\nI think it's: " << dist(rd);
-
-	cout << "\n1 - My Number less\n";
-	cout << "2 - My Number more\n";
-	cout << "3 - Correct!\n";
-
-	int answer;
-	cout << "enter your answer: ";
-	cin >> answer;
-
-	switch (answer)
+	while (myNumber < 0 || myNumber > 10)
 	{
-	case less: cout << dist(rd);
-	default:
-		break;
-	}
+		cout << "You entered incorrect number, please try again: ";
+		cin >> myNumber;
+	}	
+
+	//Initialize random device and set the range for guessing numbers
+	random_device rd;
+	mt19937 gen(rd());
+	
+	do
+	{
+
+		if (minValue > maxValue) 
+		{
+			cout << "\nSomething went wrong. Did you change your number?\n\n";
+			return;
+		}
+
+		//Generated random number in current form
+		uniform_int_distribution<int> dist(minValue, maxValue);
+
+		computerNumber = dist(gen);
+
+		cout << "\nI think it's: " << computerNumber << endl;
+
+		cout << "\n1 - My Number less";
+		cout << "\n2 - My Number more";
+		cout << "\n3 - Correct!\n";
+
+		int answer;
+		cout << "enter your answer: ";
+		cin >> answer;
+		
+		while (answer < 1 || answer > 3)
+		{
+			cout << "Invalid input! Please enter 1, 2 or 3: ";
+			cin >> answer;
+		}
+		
+
+
+		cout << "\n";
+
+		switch (answer)
+		{
+		case less:
+			maxValue = computerNumber - 1;
+			break;
+		case more:
+			minValue = computerNumber + 1;
+			break;
+		case correct:
+			cout << "The computer wins... The machine uprising is near!!!!\n\n";
+			return;
+		default:
+			break;
+		}
+	} while (minValue <= maxValue);
+		
+			cout << "\nSomething went wrong. Did you change your number?\n\n";
 }
 
 int main()
