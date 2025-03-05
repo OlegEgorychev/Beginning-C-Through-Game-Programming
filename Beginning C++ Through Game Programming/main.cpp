@@ -177,6 +177,53 @@ void task3()
 			cout << "\nSomething went wrong. Did you change your number?\n\n";
 }
 
+void task4()
+{
+	cout << "\nCounting forward: \n";
+		for (int i = 0; i < 10; ++i)
+			{
+				cout << i << " ";
+			}
+
+	cout << "\n\nCounting backward: \n";
+		for (int i = 9; i >= 0; --i)
+			{		
+				cout << i << " ";
+			}
+
+	cout << "\n\nCounting by fives: \n";
+		for (int i = 0; i <= 50; i += 5)
+			{
+				cout << i << " ";
+			}
+	cout << "\n\nCounting with null statements: \n";
+
+		int count = 0;
+
+		for (; count < 10;)
+			{
+				cout << count << " ";
+				++count;
+			}
+
+	cout << "\n\nCounting with nested for loops: \n";
+		int ROWS = 5;
+		int COLUMNS = 3;
+
+		for (int i = 0; i < ROWS; ++i)
+		{
+			for (int j = 0; j < COLUMNS; ++j)
+			{
+				cout << i << "." << j << " ";
+			}
+			cout << endl;
+		}
+
+		cout << endl;
+
+		
+}
+
 int main()
 {
 
@@ -187,8 +234,10 @@ int main()
 		cout << "\tHello! This is program for practice while I reading the book <Beginning C++ Game Programming> ";
 		cout << "\nMenu: ";
 		cout << "\n1. Game: guess a number";
-		cout << "\n2. Game: Menu Chooser";
+		cout << "\n2. Programm: Menu Chooser";
 		cout << "\n3. Game: guess MY number";
+		cout << "\n4. Programm: Counter";
+
 		cout << "\n\nEnter number to chose game: ";
 
 		cin >> choice;
@@ -200,6 +249,8 @@ int main()
 		case 2: task2();
 			break;
 		case 3: task3();
+			break;
+		case 4: task4();
 			break;
 
 		case 0: cout << "\nExit\n\n";
