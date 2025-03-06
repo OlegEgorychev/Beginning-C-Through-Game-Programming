@@ -247,7 +247,7 @@ void task5()
 	}
 
 	cout << "\nThe sequence 'Over' begins at location ";
-	cout << phrase.find('Over') << endl;
+	cout << phrase.find("Over") << endl;
 
 	if (phrase.find("eggplant") == string::npos)
 	{
