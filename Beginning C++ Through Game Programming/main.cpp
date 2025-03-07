@@ -270,6 +270,59 @@ void task5()
 
 }
 
+void task6()
+
+{
+	const int MAX_ITEMS = 10;
+
+	string inventory[MAX_ITEMS];
+
+	int numItems = 0;
+
+	inventory[numItems++] = "sword";
+	inventory[numItems++] = "armor";
+	inventory[numItems++] = "shield";
+
+	cout << "Your items: \n";
+
+	for (int i = 0; i < numItems; ++i)
+	{
+		cout << inventory[i] << endl;
+	}
+
+	cout << "\nYou trade your sword for a battle axe.";
+	inventory[0] = "battle axe";
+
+	cout << "\nYour items: \n";
+
+	for (int i = 0; i < numItems; ++i)
+	{
+		cout << inventory[i] << endl;
+	}
+
+	cout << "\nThe item name '" << inventory[0] << "' has ";
+	cout << inventory[0].size() << " Letters in it.\n";
+	cout << "\nYou find a healing potion.";
+
+	if (numItems < MAX_ITEMS)
+	{
+		inventory[numItems++] = "healing potion";
+	}
+	else
+	{
+		cout << "You have too many items and can't carry another";
+	}
+
+	cout << "\nYour items: \n";
+
+	for (int i = 0; i < numItems; ++i)
+	{
+		cout << inventory[i] << endl;
+	}
+
+	cout << endl;
+}
+
 int main()
 {
 
@@ -284,6 +337,7 @@ int main()
 		cout << "\n3. Game: guess MY number";
 		cout << "\n4. Programm: Counter";
 		cout << "\n5. Programm: String Tester";
+		cout << "\n6. Programm: Hero's Inventory";
 
 		cout << "\n\nEnter number to chose game: ";
 
@@ -300,6 +354,8 @@ int main()
 		case 4: task4();
 			break;
 		case 5: task5();
+			break;
+		case 6: task6();
 			break;
 
 		case 0: cout << "\nExit\n\n";
