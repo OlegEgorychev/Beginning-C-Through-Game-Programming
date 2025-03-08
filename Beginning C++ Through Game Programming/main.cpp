@@ -369,6 +369,49 @@ void task7()
 	cout << "\n'X' wins!\n\n";
 }
 
+void task8()
+
+{
+	//Game Word Jumble
+	//A classic puzzle game in which the user guesses words, with or without hints
+
+	enum fields {WORDS, HINT, NUM_FIELDS};
+	const int NUM_WORDS = 5;
+	const string WORDS[NUM_WORDS][NUM_FIELDS] =
+	{
+		{"wall", "Do you feel you're banging your head against something?"},
+		{"glasses", "These might help you see the answer."},
+		{"labored", "Going slowly, is it?"},
+		{"persistent", "Keep at it."},
+		{"jumble", "It's what the game is all about."},
+
+	};
+
+	/*random_device rd;
+	uniform_int_distribution<int> dist(1, 5);
+
+	int choice = (rd() % NUM_WORDS);*/
+
+	srand(static_cast<unsigned int>(time(0)));
+	int choice = (rand() % NUM_WORDS);
+
+	string theWord = WORDS[choice][WORD]; // word what player should guess
+	string theHint = WORDS[choice][HINT]; // hint for word
+
+	string jumble = theWord;
+	int length = jumble.size();
+
+	for (int i = 0; i < length; ++i)
+	{
+		int index1 = (rand() % length);
+		int index2 = (rand() % length);
+		char temp = jumble[index1];
+		jumble[index1] = jumble[index2];
+		jumble[index2] = temp;
+
+	}
+}
+
 int main()
 {
 
@@ -385,6 +428,7 @@ int main()
 		cout << "\n5. Programm: String Tester";
 		cout << "\n6. Programm: Hero's Inventory";
 		cout << "\n7. Game: Tic-Tac-Toe Board";
+		cout << "\n8. Game: Word Jumble";
 
 		cout << "\n\nEnter number to chose game: ";
 
@@ -405,6 +449,8 @@ int main()
 		case 6: task6();
 			break;
 		case 7: task7();
+			break;
+		case 8: task8();
 			break;
 
 		case 0: cout << "\nExit\n\n";
