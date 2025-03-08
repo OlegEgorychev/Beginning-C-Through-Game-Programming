@@ -57,7 +57,7 @@ void task1()
 		}
 	}
 
-	cout << "\nYou're win! It took you " << tryCounter << " tries.\n";
+	cout << "\nYou're win! It took you " << tryCounter << " tries.\n\n";
 }
 
 void task2()
@@ -323,6 +323,52 @@ void task6()
 	cout << endl;
 }
 
+void task7()
+
+{
+	//Tic-Tac-Toe Board
+	// Demonstrates working with multidimensional arrays
+
+	const int ROWS = 3;
+	const int COLUMNS = 3;
+
+	char board[ROWS][COLUMNS] =
+	{
+		{'0', 'X', '0'},
+		{' ', 'X', 'X'},
+		{'X', '0', '0'}
+	};
+
+	cout << "\nHere's the tic-tac-toe board:\n";
+
+	for (int i = 0; i < ROWS; ++i)
+	{
+		for (int j = 0; j < COLUMNS; ++j)
+		{
+			cout << board[i][j];
+		}
+		cout << endl;
+	}
+
+	cout << "\n'X' moves to the empty location\n\n";
+
+
+	board[1][0] = 'X';
+
+	cout << "Now the tic-tac-toe board  is: \n";
+
+	for (int i = 0; i < ROWS; ++i)
+	{
+		for (int j = 0; j < COLUMNS; ++j)
+		{
+			cout << board[i][j];
+		}
+		cout << endl;
+	}
+
+	cout << "\n'X' wins!\n\n";
+}
+
 int main()
 {
 
@@ -338,6 +384,7 @@ int main()
 		cout << "\n4. Programm: Counter";
 		cout << "\n5. Programm: String Tester";
 		cout << "\n6. Programm: Hero's Inventory";
+		cout << "\n7. Game: Tic-Tac-Toe Board";
 
 		cout << "\n\nEnter number to chose game: ";
 
@@ -356,6 +403,8 @@ int main()
 		case 5: task5();
 			break;
 		case 6: task6();
+			break;
+		case 7: task7();
 			break;
 
 		case 0: cout << "\nExit\n\n";
