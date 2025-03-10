@@ -5,7 +5,6 @@
 #include <ctime>
 #include <random>
 
-
 using namespace std;
 
 void task1()
@@ -375,15 +374,15 @@ void task8()
 	//Game Word Jumble
 	//A classic puzzle game in which the user guesses words, with or without hints
 
-	enum fields {WORDS, HINT, NUM_FIELDS};
+	enum fields {WORD, HINT, NUM_FIELDS};
 	const int NUM_WORDS = 5;
 	const string WORDS[NUM_WORDS][NUM_FIELDS] =
 	{
-		{"wall", "Do you feel you're banging your head against something?"},
-		{"glasses", "These might help you see the answer."},
-		{"labored", "Going slowly, is it?"},
-		{"persistent", "Keep at it."},
-		{"jumble", "It's what the game is all about."},
+		{"ocean", "A vast body of water that covers most of the Earth"},
+		{"guitar", "A musical instrument with six strings."},
+		{"shadow", "A dark shape cast by an object blocking the light"},
+		{"puzzle", "Something you solve by thinking carefully."},
+		{"whisper", " Speaking very softly so only a few can hear."},
 
 	};
 
@@ -408,8 +407,37 @@ void task8()
 		char temp = jumble[index1];
 		jumble[index1] = jumble[index2];
 		jumble[index2] = temp;
-
 	}
+
+	cout << "\n\t\t\tWelcome to Word Jumble!\n\n";
+	cout << "Uncramble the letters to make a word.\n";
+	cout << "Enter 'hint' for a hint.\n";
+	cout << "Enter 'quit' to quit the game.\n\n";
+	cout << "The jumble is: " << jumble;
+	string guess;
+	cout << "\n\nYour guess: ";
+	cin >> guess;
+
+	// Start game loop
+	while ((guess != theWord) && (guess != "quit"))
+	{
+		if (guess == "hint")
+		{
+			cout << theHint;
+		}
+		else
+		{
+			cout << "Sorry, that's not it.";
+		}
+		cout << "\n\nYour guess: ";
+		cin >> guess;
+	}
+
+	if (guess == theWord)
+	{
+		cout << "\nThat's it! You guessed it!\n";
+	}
+	cout << "\nThanks for playing.\n\n";
 }
 
 int main()
