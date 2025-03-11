@@ -400,6 +400,9 @@ void task8()
 	string jumble = theWord;
 	int length = jumble.size();
 
+	// debug cout << jumble.size();
+	// debug cout << length;
+
 	for (int i = 0; i < length; ++i)
 	{
 		int index1 = (rand() % length);
@@ -413,10 +416,14 @@ void task8()
 	cout << "Uncramble the letters to make a word.\n";
 	cout << "Enter 'hint' for a hint.\n";
 	cout << "Enter 'quit' to quit the game.\n\n";
+	cout << "Get 10 points for each guessed char.\n\n";
 	cout << "The jumble is: " << jumble;
 	string guess;
 	cout << "\n\nYour guess: ";
 	cin >> guess;
+
+	int playerPoints = 0;
+
 
 	// Start game loop
 	while ((guess != theWord) && (guess != "quit"))
@@ -436,7 +443,10 @@ void task8()
 	if (guess == theWord)
 	{
 		cout << "\nThat's it! You guessed it!\n";
+		playerPoints =+ jumble.size() * 10;
 	}
+
+	cout << "\nYour points: " << playerPoints << ".\n\n";
 	cout << "\nThanks for playing.\n\n";
 }
 
