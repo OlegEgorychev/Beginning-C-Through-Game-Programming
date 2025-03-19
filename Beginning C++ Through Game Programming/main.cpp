@@ -374,48 +374,69 @@ void task8()
 	//Game Word Jumble
 	//A classic puzzle game in which the user guesses words, with or without hints
 
-	
 
-		enum fields { WORD, HINT, NUM_FIELDS };
-		const int NUM_WORDS = 10;
-		const string WORDS[NUM_WORDS][NUM_FIELDS] =
+
+	enum fields { WORD, HINT, NUM_FIELDS };
+	const int NUM_WORDS = 10;
+	const string WORDS[NUM_WORDS][NUM_FIELDS] =
+	{
+		{"ocean", "A vast body of water that covers most of the Earth"},
+		{"guitar", "A musical instrument with six strings."},
+		{"shadow", "A dark shape cast by an object blocking the light"},
+		{"puzzle", "Something you solve by thinking carefully."},
+		{"sun", " A bright star that gives us light and warmth."},
+		{"train", " A long vehicle that moves on tracks."},
+		{"forest", " A large area filled with trees and wildlife."},
+		{"balloon", " A light object filled with air or gas that floats."},
+		{"elephant", " A large animal with a trunk and big ears."},
+		{"whisper", " Speaking very softly so only a few can hear."},
+
+	};
+
+	bool useWords[NUM_WORDS] = { false };
+
+	/*random_device rd;
+	uniform_int_distribution<int> dist(1, 5);
+
+	int choice = (rd() % NUM_WORDS);*/
+
+
+
+
+	//Score
+	int playerPoints = 0;
+	int pointsForWord = 1;
+	int pointsForHint = 5;
+
+	// debug cout << jumble.size();
+	// debug cout << length;
+
+	cout << "\n\t\t\tWelcome to Word Jumble!\n\n";
+	cout << "Uncramble the letters to make a word.\n";
+	cout << "Enter 'hint' for a hint.\n";
+	cout << "Enter 'quit' to quit the game.\n\n";
+	cout << "You have 5 rounds where you earn 2 points for each guessed character, but if you use a hint, you lose 5 points.\n\n";
+
+
+	srand(static_cast<unsigned int>(time(0)));
+
+	for (int round = 0; round < 5; ++round)
+	{
+
+		int choice;
+		do
 		{
-			{"ocean", "A vast body of water that covers most of the Earth"},
-			{"guitar", "A musical instrument with six strings."},
-			{"shadow", "A dark shape cast by an object blocking the light"},
-			{"puzzle", "Something you solve by thinking carefully."},
-			{"sun", " A bright star that gives us light and warmth."},
-			{"train", " A long vehicle that moves on tracks."},
-			{"forest", " A large area filled with trees and wildlife."},
-			{"balloon", " A light object filled with air or gas that floats."},
-			{"elephant", " A large animal with a trunk and big ears."},
-			{"whisper", " Speaking very softly so only a few can hear."},
-
-		};
-
-		/*random_device rd;
-		uniform_int_distribution<int> dist(1, 5);
-
-		int choice = (rd() % NUM_WORDS);*/
-
-
-		srand(static_cast<unsigned int>(time(0)));
-		int choice = (rand() % NUM_WORDS);
+			choice = rand() % NUM_WORDS;
+		} while (useWords[choice]); //choise a new word, if current was used
+		{
+			useWords[choice] = true;//mark word as used
+		}
 
 		string theWord = WORDS[choice][WORD]; // word what player should guess
 		string theHint = WORDS[choice][HINT]; // hint for word
 
 		string jumble = theWord;
 		int length = jumble.size();
-
-		
-		//Score
-		int playerPoints = 0;
-		int pointsForWord = 1;
-		int pointsForHint = 5;
-
-		// debug cout << jumble.size();
-		// debug cout << length;
 
 		for (int i = 0; i < length; ++i)
 		{
@@ -426,18 +447,45 @@ void task8()
 			jumble[index2] = temp;
 		}
 
-		cout << "\n\t\t\tWelcome to Word Jumble!\n\n";
-		cout << "Uncramble the letters to make a word.\n";
-		cout << "Enter 'hint' for a hint.\n";
-		cout << "Enter 'quit' to quit the game.\n\n";
-		cout << "You have 5 rounds where you earn 2 points for each guessed character, but if you use a hint, you lose 5 points.\n\n";
-		
+		cout << "Round " << round + 1 << ": " << "\n The jumble is : " << jumble;
 		string guess;
-		
-		for(int i = 0; i < 5; ++i)
-		{ 
-		
-		cout << "The jumble is: " << jumble;
+
+		while (true)
+		{
+			cout << "\n\nYour guess: ";
+			cin >> guess;
+
+			if (guess == "hint")
+			{
+				cout << theHint;
+				playerPoints -= pointsForHint;
+				cout << "\nYou lose " << pointsForHint << " points for using a hint :( ";
+			}
+			else if (guess == theWord)
+			{
+				int earnedPoints = length * pointsForWord;
+				cout << "\nThat's it! You guessed it! + " << earnedPoints << " points.\n\n";
+				playerPoints += earnedPoints;
+				break; // end current round
+			}
+			else if (guess == "quit")
+			{
+				cout << "\nYou quit the game.\n";
+				round = 5; // end game
+				break;
+			}
+			else
+			{
+				cout << "Sorry, that's not it.";
+			}
+		}
+	}
+
+	cout << "\nYour total points: " << playerPoints << ".\n\n";
+	cout << "Thanks for playing!\n\n";
+}
+
+		/*
 		cout << "\n\nYour guess: ";
 		cin >> guess;
 
@@ -463,7 +511,7 @@ void task8()
 
 		if (guess == theWord)
 		{
-			cout << "\nThat's it! You guessed it! + " << pointsForWord * jumble.size() << " points.\n";
+			cout << "\nThat's it! You guessed it! + " << pointsForWord * jumble.size() << " points. Your total points is " << playerPoints << "\n";
 			playerPoints += jumble.size() * pointsForWord;
 		}
 
@@ -471,7 +519,8 @@ void task8()
 
 		cout << "\nYour points: " << playerPoints << ".\n\n";
 		cout << "\nThanks for playing.\n\n";
-}
+		*/
+
 
 
 int main()
